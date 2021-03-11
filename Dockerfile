@@ -12,11 +12,12 @@ RUN apt-get update \
        libgdal-dev \
        imagemagick \
        r-cran-httr \
-       libssl-dev && \
+       libssl-dev \
+       libreoffice && \
        rm -rf /var/lib/apt/lists/*
 
 RUN install2.r --error --deps TRUE \
-       magick googledrive tuber pdftools aws.polly usethis
+       magick googledrive tuber pdftools aws.polly usethis docxtractr
 
 RUN installGithub.r --deps TRUE \
        jhudsl/ariExtra jhudsl/ari jhudsl/text2speech jhudsl/didactr
