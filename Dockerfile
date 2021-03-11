@@ -9,8 +9,13 @@ RUN apt-get update \
        tesseract-ocr-eng \
        libwebp-dev \
        libgdal-dev \
-       imagemagick  \
-  && install2.r --error --deps TRUE \
-       magick googledrive tuber pdftools \
-  && installGithub.r --deps TRUE \
-       muschellij2/ari muschellij2/didactr
+       imagemagick \
+       r-cran-httr \
+       libssl-dev && \
+       rm -rf /var/lib/apt/lists/*
+
+RUN install2.r --error --deps TRUE \
+       magick googledrive tuber pdftools aws.polly usethis
+
+RUN installGithub.r --deps TRUE \
+       jhudsl/ariExtra jhudsl/ari jhudsl/text2speech jhudsl/didactr
