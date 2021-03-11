@@ -4,6 +4,7 @@ RUN apt-get update \
   && apt-get install -y \
        libpoppler-cpp-dev \
        ffmpeg \
+       libavfilter-dev \
        libtesseract-dev \
        libleptonica-dev \
        tesseract-ocr-eng \
