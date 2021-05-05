@@ -20,6 +20,7 @@ RUN apt-get update \
        libmagick++-dev \
        libfontconfig-dev \
        libxml2-dev \
+       libsodium-dev \
        libreoffice && \
        rm -rf /var/lib/apt/lists/*
 
