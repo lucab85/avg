@@ -21,6 +21,8 @@ RUN apt-get update \
        libxml2-dev \
        libsodium-dev \
        cargo \
+       default-jre \
+       libreoffice-java-common \
        libreoffice && \
        rm -rf /var/lib/apt/lists/*
 
@@ -31,4 +33,5 @@ RUN installGithub.r --deps TRUE \
        jhudsl/ariExtra jhudsl/ari jhudsl/text2speech jhudsl/didactr
 
 RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && \
-       ldconfig
+       ldconfig && chmod +x /usr/local/bin/pptx2ari.sh && \
+       chmod +x /usr/local/bin/gs2ari.sh
