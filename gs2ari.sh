@@ -5,7 +5,7 @@ markdown = paste(input, "md", sep=".")
 output = Sys.getenv("AVG_OUTPUT", paste(input, "mp4", sep="."))
 service = Sys.getenv("AVG_SERVICE", "amazon")
 voice = Sys.getenv("AVG_VOICE", "Joey")
-dpi = Sys.getenv("AVG_DPI", "300")
+dpi = as.double(Sys.getenv("AVG_DPI", 300))
 subtitles = Sys.getenv("AVG_SUBTITLES", "TRUE")
 verbose = Sys.getenv("AVG_VERBOSE", "TRUE")
 
