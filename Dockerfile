@@ -1,8 +1,7 @@
 FROM rocker/r-base:latest
 
-COPY pptx2ari_aws.sh /usr/local/bin
-
-COPY pptx2ari_gcp.sh /usr/local/bin
+COPY pptx2ari.sh /usr/local/bin
+COPY gs2ari.sh /usr/local/bin
 
 RUN apt-get update \
   && apt-get install -y \
@@ -22,6 +21,8 @@ RUN apt-get update \
        libxml2-dev \
        libsodium-dev \
        cargo \
+       default-jre \
+       libreoffice-java-common \
        libreoffice && \
        rm -rf /var/lib/apt/lists/*
 
@@ -30,3 +31,7 @@ RUN install2.r --error --deps TRUE \
 
 RUN installGithub.r --deps TRUE \
        jhudsl/ariExtra jhudsl/ari jhudsl/text2speech jhudsl/didactr
+
+RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && \
+       ldconfig && chmod +x /usr/local/bin/pptx2ari.sh && \
+       chmod +x /usr/local/bin/gs2ari.sh
