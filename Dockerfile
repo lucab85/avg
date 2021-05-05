@@ -21,6 +21,7 @@ RUN apt-get update \
        libfontconfig-dev \
        libxml2-dev \
        libsodium-dev \
+       cargo \
        libreoffice && \
        rm -rf /var/lib/apt/lists/*
 
