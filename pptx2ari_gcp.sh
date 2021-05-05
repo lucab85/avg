@@ -1,32 +1,40 @@
 #!/usr/bin/env Rscript
-args = commandArgs(trailingOnly=TRUE)
 
-if (length(args)==0) {
-  stop("Missing input PPTX file file", call.=FALSE)
-}
+#args = commandArgs(trailingOnly=TRUE)
+#if (length(args)==0) {
+#  stop("Missing input", call.=FALSE)
+#}
+#input = args[1]
 
 # ENV
 #Sys.setenv("GL_AUTH_FILE" = "")
 
-input = args[1]
+input = Sys.getenv("AVG_INPUT", "input.pptx")
 markdown = paste(input, "md", sep=".")
-output = paste(input, "mp4", sep=".")
-voice = "en-US-Wavenet-B"
-service = "google"
-subtitles = TRUE
-verbose = TRUE
+output = Sys.getenv("AVG_OUTPUT", paste(input, "mp4", sep="."))
+service = Sys.getenv("AVG_SERVICE", "google")
+voice = Sys.getenv("AVG_VOICE", "en-US-Wavenet-B")
+dpi = Sys.getenv("AVG_DPI", "300")
+subtitles = Sys.getenv("AVG_SUBTITLES", "TRUE")
+verbose = Sys.getenv("AVG_VERBOSE", "TRUE")
 
 doc <- ariExtra::pptx_to_ari(
-	input,
-	dpi = 300,
-	output = markdown
+  input,
+  dpi = dpi,
+  output = markdown
 )
 
 doc[c("images", "script")]
-
 script = doc$script
 slides = doc$images
 
-pptx_result <- ari::ari_spin(slides, script,
-	output = output, voice = voice, verbose = verbose, subtitles = subtitles
+result <- ari::ari_spin(slides, script,
+  output = output,
+  service = service,
+  voice = voice,
+  verbose = verbose,
+  subtitles = subtitles
 )
+
+unlink(paste(input, "files", sep="_"), recursive=TRUE)
+unlink(markdown)

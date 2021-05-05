@@ -1,14 +1,5 @@
 #!/usr/bin/env Rscript
 
-#args = commandArgs(trailingOnly=TRUE)
-#if (length(args)==0) {
-#  stop("Missing input", call.=FALSE)
-#}
-#input = args[1]
-
-# ENV
-#Sys.setenv("AWS_ACCESS_KEY_ID" = "","AWS_SECRET_ACCESS_KEY" = "","AWS_DEFAULT_REGION" = "")
-
 input = Sys.getenv("AVG_INPUT", "input.pptx")
 markdown = paste(input, "md", sep=".")
 output = Sys.getenv("AVG_OUTPUT", paste(input, "mp4", sep="."))

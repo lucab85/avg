@@ -1,7 +1,7 @@
 FROM rocker/r-base:latest
 
-COPY pptx2ari_aws.sh /usr/local/bin
-COPY pptx2ari_gcp.sh /usr/local/bin
+COPY pptx2ari.sh /usr/local/bin
+COPY gs2ari.sh /usr/local/bin
 
 RUN apt-get update \
   && apt-get install -y \

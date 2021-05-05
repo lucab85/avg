@@ -9,7 +9,7 @@
 # ENV
 #Sys.setenv("AWS_ACCESS_KEY_ID" = "","AWS_SECRET_ACCESS_KEY" = "","AWS_DEFAULT_REGION" = "")
 
-input = Sys.getenv("AVG_INPUT", "input.pptx")
+input = Sys.getenv("AVG_INPUT", "input")
 markdown = paste(input, "md", sep=".")
 output = Sys.getenv("AVG_OUTPUT", paste(input, "mp4", sep="."))
 service = Sys.getenv("AVG_SERVICE", "amazon")
@@ -18,8 +18,10 @@ dpi = Sys.getenv("AVG_DPI", "300")
 subtitles = Sys.getenv("AVG_SUBTITLES", "TRUE")
 verbose = Sys.getenv("AVG_VERBOSE", "TRUE")
 
-doc <- ariExtra::pptx_to_ari(
+doc <-ariExtra::gs_to_ari(
   input,
+  open = FALSE,
+  use_knitr = FALSE,
   dpi = dpi,
   output = markdown
 )
