@@ -1,3 +1,4 @@
+[![ci](https://github.com/lucab85/avg/actions/workflows/ci.yml/badge.svg)](https://github.com/lucab85/avg/actions/workflows/ci.yml)
 # AVG
 
 AVG is a [Docker](https://www.docker.com/) image for
