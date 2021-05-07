@@ -36,7 +36,7 @@ RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && 
        ldconfig && \
        chmod +x /usr/local/bin/pptx2ari.sh && \
        chmod +x /usr/local/bin/gs2ari.sh && \
-       rm -rf /tmp/downloaded_packages/ /tmp/*.rds &&
+       rm -rf /tmp/downloaded_packages/ /tmp/*.rds && \
        rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/local/bin/pptx2ari.sh"]
