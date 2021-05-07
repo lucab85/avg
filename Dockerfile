@@ -33,7 +33,10 @@ RUN installGithub.r --deps TRUE \
        jhudsl/ariExtra jhudsl/ari jhudsl/text2speech jhudsl/didactr
 
 RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && \
-       ldconfig && chmod +x /usr/local/bin/pptx2ari.sh && \
-       chmod +x /usr/local/bin/gs2ari.sh
+       ldconfig && \
+       chmod +x /usr/local/bin/pptx2ari.sh && \
+       chmod +x /usr/local/bin/gs2ari.sh && \
+       rm -rf /tmp/downloaded_packages/ /tmp/*.rds &&
+       rm -rf /var/lib/apt/lists/*
 
 CMD ["/usr/local/bin/pptx2ari.sh"]
