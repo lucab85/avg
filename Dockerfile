@@ -35,3 +35,5 @@ RUN installGithub.r --deps TRUE \
 RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && \
        ldconfig && chmod +x /usr/local/bin/pptx2ari.sh && \
        chmod +x /usr/local/bin/gs2ari.sh
+
+CMD ["/usr/local/bin/pptx2ari.sh"]
