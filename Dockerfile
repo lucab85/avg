@@ -39,4 +39,10 @@ RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && 
        rm -rf /tmp/downloaded_packages/ /tmp/*.rds && \
        rm -rf /var/lib/apt/lists/*
 
+RUN useradd avg \
+  && echo "avg:avg" | chpasswd \
+       && mkdir /home/avg \
+       && chown avg:avg /home/avg \
+       && addgroup avg staff \
+
 CMD ["bash"]
