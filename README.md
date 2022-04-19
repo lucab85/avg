@@ -8,7 +8,9 @@ programmatically building educational content.
 
 1.  Install & start[Docker](https://docs.docker.com/install/)
 2.  Pull `docker pull lucab85/avg`
-3.  Run the container:
+3.  Create or a shared volume to share files between host and container (default "share" folder in the current path)
+4.  Customize the "default.env" file with the required parameter (see below)
+5.  Run the container (customize the "share" folder as needed):
 ~~~
 docker run --name="avg" -dit --mount type=bind,source=$(pwd)/share,target=/share --env-file=default.env lucab85/avg
 ~~~
@@ -22,7 +24,7 @@ docker run --name="avg" -dit --mount type=bind,source=$(pwd)/share,target=/share
 
 AVG environment variables:
 
-* `AVG_INPUT` = input
+* `AVG_INPUT` = input filename (default "input.pptx")
 * `AVG_OUTPUT` = output filename (default: input + .mp4)
 * `AVG_SERVICE` = tts service (default: "amazon", values: "amazon" / "google")
 * `AVG_VOICE` = voices (default: "Joey")
