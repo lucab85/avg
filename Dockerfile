@@ -40,11 +40,11 @@ RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && 
        rm -rf /tmp/downloaded_packages/ /tmp/*.rds && \
        rm -rf /var/lib/apt/lists/*
 
-RUN wget https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz -O /root/RedHatFont.tar.gz && \
-    tar zxvf /root/RedHatFont.tar.gz && \
-    cp -v /root/RedHatFont/RedHatFont-4.0.2/fonts/*/*.ttf /usr/share/fonts && \
-    fc-cache -f -v && \
-    rm -fr /root/RedHatFont.tar.gz /root/RedHatFont* 
+RUN wget https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz -O /root/RedHatFont.tar.gz
+RUN tar zxvf /root/RedHatFont.tar.gz
+RUN cp -v /root/RedHatFont/RedHatFont-4.0.2/fonts/*/*.ttf /usr/share/fonts
+RUN fc-cache -f -v
+RUN rm -fr /root/RedHatFont.tar.gz /root/RedHatFont*
 
 RUN useradd avg \
   && echo "avg:avg" | chpasswd \
