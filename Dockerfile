@@ -42,7 +42,7 @@ RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && 
 
 RUN wget https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz -O /root/RedHatFont.tar.gz
 RUN tar zxvf /root/RedHatFont.tar.gz
-RUN cp -v /root/RedHatFont/RedHatFont-4.0.2/fonts/*/*.ttf /usr/share/fonts
+RUN cp -v /root/RedHatFont*/fonts/*/*.ttf /usr/share/fonts
 RUN fc-cache -f -v
 RUN rm -fr /root/RedHatFont.tar.gz /root/RedHatFont*
 
