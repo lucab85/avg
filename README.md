@@ -132,7 +132,8 @@ The time it takes to convert your presentation depends on a number of factors, i
 
 1. The number of slides are in your presentation (i.e. converting each one to a graphic image and then a video (below)).
 2. The amount of text in the speaker notes (per slide), where each must be converted to an audio file and then a video clip (with the slide content) of the same length.
-3. The speed of your local system's CPU (the final step of merging the above audio+video assets together to form the completed video is quite compute-intensive).
+3. The value of the `AVG_VOICE` variable, which controls which voice will be used when converting the speaker notes to audio. Some voices speak more slowly than others and slower voices can result in longer videos.
+4. The speed of your local system's CPU (the final step of merging the above audio+video assets together to form the completed video is quite compute-intensive).
 
 Some early experiments show that it could take around 75% of the total length of the final video to complete the full video generation.
 
