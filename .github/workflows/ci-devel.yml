@@ -27,6 +27,7 @@ jobs:
         with:
           push: true
           tags: lucab85/avg:devel
+          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
