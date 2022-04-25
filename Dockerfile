@@ -23,7 +23,8 @@ RUN apt-get update \
        cargo \
        default-jre \
        libreoffice-java-common \
-       libreoffice && \
+       libreoffice \
+       wget && \
        rm -rf /var/lib/apt/lists/*
 
 RUN install2.r --error --deps TRUE \
@@ -38,6 +39,14 @@ RUN echo "/usr/lib/libreoffice/program/" > /etc/ld.so.conf.d/openoffice.conf && 
        chmod +x /usr/local/bin/gs2ari.sh && \
        rm -rf /tmp/downloaded_packages/ /tmp/*.rds && \
        rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz -O /root/font.tar.gz && \
+       mkdir -pv /root/font && \
+       tar zxvf /root/font.tar.gz --directory /root/font && \
+       ls -al /root/font* && \
+       cp -v /root/font/*/*/*/*.ttf /usr/share/fonts && \
+       fc-cache -f -v && \
+       rm -fr /root/font.tar.gz /root/font*
 
 RUN useradd avg \
   && echo "avg:avg" | chpasswd \
