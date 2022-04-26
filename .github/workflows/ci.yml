@@ -27,7 +27,8 @@ jobs:
         with:
           push: true
           tags: lucab85/avg:latest
-          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
+#          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
+          platforms: linux/amd64,linux/arm64/v8
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Image digest
