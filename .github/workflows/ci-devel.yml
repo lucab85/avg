@@ -1,4 +1,4 @@
-name: ci
+name: ci-devel
 
 on:
   push:
@@ -6,9 +6,7 @@ on:
       - 'devel'
 
 env:
-  GITHUB_PAT: ${{ secrets.GH_PAT }}
-  GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-  GITHUB_PAT_GITHUB_COM: ${{ secrets.GH_PAT }}
+  GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   docker:
@@ -33,7 +31,7 @@ jobs:
           push: true
           tags: lucab85/avg:devel
           platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          github-token: ${{ secrets.GH_PAT }}
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
