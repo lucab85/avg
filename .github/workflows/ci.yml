@@ -6,8 +6,9 @@ on:
       - 'master'
 
 env:
-  GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_PAT: ${{ secrets.GH_PAT }}
+  GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+  GITHUB_PAT_GITHUB_COM: ${{ secrets.GH_PAT }}
 
 jobs:
   docker:
@@ -32,7 +33,7 @@ jobs:
           push: true
           tags: lucab85/avg:latest
           platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GH_PAT }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
