@@ -5,6 +5,9 @@ on:
     branches:
       - 'master'
 
+env:
+  GITHUB_PAT: ${{ secrets.GH_PAT }}
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -27,8 +30,7 @@ jobs:
         with:
           push: true
           tags: lucab85/avg:latest
-#          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          platforms: linux/amd64,linux/arm64/v8
+          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Image digest
