@@ -44,7 +44,8 @@ RUN wget https://github.com/RedHatOfficial/RedHatFont/archive/4.0.2.tar.gz -O /r
        mkdir -pv /root/font && \
        tar zxvf /root/font.tar.gz --directory /root/font && \
        ls -al /root/font* && \
-       cp -v /root/font/*/*/*/*.ttf /usr/share/fonts && \
+       mkdir -pv /usr/share/fonts/redhat && \
+       cp -v /root/font/*/*/*/*.ttf /usr/share/fonts/redhat && \
        fc-cache -f -v && \
        rm -fr /root/font.tar.gz /root/font*
 
