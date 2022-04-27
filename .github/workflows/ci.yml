@@ -31,7 +31,7 @@ jobs:
           push: true
           tags: lucab85/avg:latest
           platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          token: ${{ secrets.GH_PAT }}
+          github-token: ${{ secrets.GH_PAT }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
