@@ -31,8 +31,9 @@ jobs:
         with:
           push: true
           tags: lucab85/avg:devel
-          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
+          platforms: linux/amd64,linux/arm64/v8
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
