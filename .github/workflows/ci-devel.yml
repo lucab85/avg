@@ -34,6 +34,7 @@ jobs:
 #          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
           platforms: linux/amd64
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push ARM
         id: docker_build_arm
@@ -44,6 +45,7 @@ jobs:
 #          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
           platforms: linux/arm64/v8
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build_x86.outputs.digest }}
