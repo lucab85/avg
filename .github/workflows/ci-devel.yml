@@ -25,25 +25,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push x86
-        id: docker_build_x86
+      - name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: lucab85/avg:devel
-#          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
+#          platforms: linux/amd64
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push ARM
-        id: docker_build_arm
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: lucab85/avg:devel
-#          platforms: linux/amd64,linux/arm64/v8,linux/ppc64le,linux/s390x
-          platforms: linux/arm64/v8
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          secrets: |
+            "github_token=${{ secrets.GITHUB_TOKEN }}"
 
       - name: Image digest
-        run: echo ${{ steps.docker_build_x86.outputs.digest }}
+        run: echo ${{ steps.docker_build.outputs.digest }}
