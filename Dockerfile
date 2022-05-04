@@ -3,6 +3,9 @@ FROM rocker/r-base:latest
 COPY pptx2ari.sh /usr/local/bin
 COPY gs2ari.sh /usr/local/bin
 
+RUN --mount=type=secret,id=github_token \
+  cat /run/secrets/github_token
+
 RUN apt-get update \
   && apt-get install -y \
        libpoppler-cpp-dev \
